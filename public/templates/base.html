@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}Baasbox Admin{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{{rootPath}}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="{{rootPath}}/js/html5shiv.min.js"></script>
+      <script src="{{rootPath}}/js/respond.min.js"></script>
+    <![endif]-->
+
+    {% block head %}{% endblock %}
+    
+    <script src="{{rootPath}}/js/config.js"></script>
+    <script src="{{rootPath}}/js/utils.js"></script>
+    <script src="{{rootPath}}/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="stylesheet" href="{{rootPath}}/css/app.css"/>
+  </head>
+  <body>
+
+    <div class="container">
+      {% include "templates/navbar_main.html" %}
+      {% block content %}{% endblock %}
+    </div> <!-- /container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{rootPath}}/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{rootPath}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

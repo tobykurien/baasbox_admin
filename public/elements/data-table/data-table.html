@@ -1,0 +1,75 @@
+<link rel="import"
+      href="../../bower_components/polymer/polymer.html"/>
+
+<polymer-element name="data-table" attributes="model cols where orderBy actions onAction readonly">
+  <template>
+      <div id="data_table">
+         <template if="{{!readonly}}">
+           <button class="btn btn-primary" on-click="{{create}}">Add new {{name}}</button>
+	      </template>
+
+         <div class="input-group" style="float:right;width:20em">
+		      <input type="text" class="form-control" placeholder="Search for..." name="search" id="search">
+	         <span class="input-group-btn">
+	            <button type="button" class="btn btn-default" on-click="[[search]]">Go!</button>
+	         </span>
+         </div>
+         
+	      <table class="table table-hover table-striped">
+	         <thead>
+	         <tr>
+	            <template repeat="{{c in columns()}}">
+	            <th>{{c}}</td>
+	            </template>
+	            <th style="text-align: right;" align="right">Action</td>
+	         </tr>
+	         </thead>
+	
+	         <tbody>
+	         <template repeat="{{m in models}}">
+	         <tr>
+	            <template repeat="{{c in columns()}}">
+	            <td>{{m[c]}}</td>
+	            </template>
+	            <td align="right">
+                  <template if="{{!readonly}}">
+		               <button class="btn btn-primary" on-click="{{edit}}">Edit</button> 
+		               <button class="btn btn-primary" on-click="{{del}}">Del</button>
+	               </template>
+	               <template repeat="{{o in operations}}">
+	                 <button class="btn btn-primary" on-click="{{operation}}">{{o}}</button>
+	               </template>
+	            </td>
+	         </tr>
+	         </template>
+	         </tbody>
+	      </table>  
+
+	      <p/>
+	      <nav>
+	        <ul class="pagination">
+	          <li class="{{ { disabled: page <= 0 }  | tokenList }}">
+	            <a on-click="{{previousPage}}" aria-label="Previous">
+	              <span aria-hidden="true">&laquo;</span>
+	            </a>
+	          </li>
+	          
+	          <template repeat="{{p,pIndex in pagesArray}}">
+	          <li class="{{ { disabled: page == pIndex }  | tokenList }}"><a on-click="{{loadPage}}">{{pIndex}}</a></li>
+	          </template>
+	          
+	          <li class="{{ { disabled: page >= pages - 1}  | tokenList }}">
+	            <a on-click="{{nextPage}}" aria-label="Next">
+	              <span aria-hidden="true">&raquo;</span>
+	            </a>
+	          </li>
+	        </ul>
+	      </nav>
+      </div>
+
+      <div class="dialog" id="model_form"></div>     
+  </template>
+  
+  <script src="baasbox-0.8.4.min.js"></script>
+  <script src="data-table.js"></script>
+</polymer-element>

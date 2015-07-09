@@ -1,0 +1,25 @@
+{% extends "templates/base.html" %}
+
+{% block head %}
+   <link rel="import" href="{{rootPath}}/elements/data-table/data-table.html"/>
+{% endblock %}
+
+{% block content %}
+	<h1>Organizations</h1>
+	
+	<data-table model="Organization" actions="Action1 Action2" onAction="onAction" orderBy="name">
+		{% include activityPath + "/edit_form.html" %}
+	</data-table>
+
+	<script>
+		function onAction(operation, model) {
+		    if (operation === "Action1") {
+			alert("TODO: implement Action 1 for item " + escape(model["id"]));
+			// example of calling an "employees" activity if it existed:
+			//location.href = "?r=employees&org=" + escape(model["id"]);
+		    } else if (operation === "Action2") {
+			alert("TODO: implement Action 2 for item " + escape(model["id"]));
+		    }
+		}
+	</script>
+{% endblock %}
