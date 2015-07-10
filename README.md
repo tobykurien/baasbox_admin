@@ -1,12 +1,12 @@
-# Baasbox admin web component
+# BaasBox admin web component
 
-A web application that uses the ```data-table``` HTML 5 web component that can be used to create admin tools for Baasbox documents. The web application can be hosted, or executed locally (unhosted) by simply opening the ```public/index.html``` file. This project is based off the [Web App Skeleton project][webapp_skeleton] (see that project for more details on the technologies used).
+A web application that uses the ```data-table``` HTML 5 web component that can be used to create admin tools for BaasBox documents. The web application can be hosted, or executed locally (unhosted) by simply opening the ```public/index.html``` file. This project is based off the [Web App Skeleton project][webapp_skeleton] (see that project for more details on the technologies used).
 
 ![Screenshot](screenshot.png)
 
 # Features
 
-- Add, edit, delete documents on a Baasbox server
+- Add, edit, delete documents on a BaasBox server
 - Paging and searching for documents
 - Upload images to documents
 - Upload GPS co-ordinates using Open Street Map markers
@@ -14,9 +14,9 @@ A web application that uses the ```data-table``` HTML 5 web component that can b
 
 # Usage
 
-- From your Baasbox backend, add a collection called ```Organization```, to try out the sample code.
+- From your BaasBox backend, add a collection called ```Organization```, to try out the sample code.
 - Run ```bower install``` in the ```public``` directory to install the required dependencies. 
-- Edit the ```public/js/config.js``` with the correct details for your Baasbox server.
+- Edit the ```public/js/config.js``` with the correct details for your BaasBox server.
 - Open the ```index.html``` in your browser
 - Click the *Organizations* link and play with the tool to see how it works
 
@@ -38,11 +38,11 @@ Sample usage:
 </data-table>
 ```
 
-The Baasbox server credentials are read from a global ```config.baasbox``` variable, which can be initialized as follows:
+The BaasBox server credentials are read from a global ```config.BaasBox``` variable, which can be initialized as follows:
 
 ```javascript
 window.config = {
-   'baasbox': {
+   'BaasBox': {
       'url': 'http://localhost:9000',
       'appcode': '1234567890',
       'username': 'admin',
@@ -89,16 +89,16 @@ For a more detailed example, see the [Organizations example][org_example]
 
 Attributes that the ```data-table``` element accepts:
 
-- ```model```: name of the collection on the Baasbox server
+- ```model```: name of the collection on the BaasBox server
 - ```cols```: space-separated list of columns (fields) to display in the list. Default is "name".
-- ```where```: a where clause for the Baasbox query, e.g. ```where="name like 'Apple'"```
-- ```orderBy```: the orderBy clause for the Baasbox query, e.g. ```orderBy="name desc"```
+- ```where```: a where clause for the BaasBox query, e.g. ```where="name like 'Apple'"```
+- ```orderBy```: the orderBy clause for the BaasBox query, e.g. ```orderBy="name desc"```
 - ```actions```: space-separated list of actions for each item, e.g. ```actions="Action1 Action2"```. These appear as buttons on each row.
 - ```onAction```: a javascript function to call when an action button is clicked. The function is passed the action name (string) and the model object as parameters.
 
 # Development
 
-In order to create more admin pages for the documents in your Baasbox server:
+In order to create more admin pages for the documents in your BaasBox server:
 
 - Add a new activity in the ```public/activities/``` directory (copy & paste the organizations one)
 - Add links to the activity in ```public/templates/navbar_main``` and ```public/activities/default/default.html```
