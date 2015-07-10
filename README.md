@@ -17,7 +17,7 @@ A web application that uses the ```data-table``` HTML 5 web component that can b
 - From your BaasBox backend, add a collection called ```Organization```, to try out the sample code.
 - Run ```bower install``` in the ```public``` directory to install the required dependencies. 
 - Edit the ```public/js/config.js``` with the correct details for your BaasBox server.
-- Open the ```index.html``` in your browser
+- Open the ```public/index.html``` in your browser
 - Click the *Organizations* link and play with the tool to see how it works
 
 The code for the Organizations tool is in ```public/activities/organizations/organizations.html```
@@ -38,11 +38,11 @@ Sample usage:
 </data-table>
 ```
 
-The BaasBox server credentials are read from a global ```config.BaasBox``` variable, which can be initialized as follows:
+The BaasBox server credentials are read from a global ```config.baasbox``` variable, which can be initialized as follows:
 
 ```javascript
 window.config = {
-   'BaasBox': {
+   'baasbox': {
       'url': 'http://localhost:9000',
       'appcode': '1234567890',
       'username': 'admin',
