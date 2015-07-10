@@ -38,6 +38,19 @@ Sample usage:
 </data-table>
 ```
 
+The Baasbox server credentials are read from a global ```config.baasbox``` variable, which can be initialized as follows:
+
+```javascript
+window.config = {
+   'baasbox': {
+      'url': 'http://localhost:9000',
+      'appcode': '1234567890',
+      'username': 'admin',
+      'password': 'admin'
+   }
+}
+```
+
 The above allows *listing* and *deleting* the items. In order to be able to *add* or *edit* an item, you need to provide an edit form in a ```template``` tag as the first child of the ```data-table``` element, e.g.
 
 ```html
@@ -73,6 +86,15 @@ Sometimes, you will want to provide additional actions to perform on an item. Fo
 ```
 
 For a more detailed example, see the [Organizations example][org_example]
+
+Attributes that the ```data-table``` element accepts:
+
+- ```model```: name of the collection on the Baasbox server
+- ```cols```: space-separated list of columns (fields) to display in the list. Default is "name".
+- ```where```: a where clause for the Baasbox query, e.g. ```where="name like 'Apple'"```
+- ```orderBy```: the orderBy clause for the Baasbox query, e.g. ```orderBy="name desc"```
+- ```actions```: space-separated list of actions for each item, e.g. ```actions="Action1 Action2"```. These appear as buttons on each row.
+- ```onAction```: a javascript function to call when an action button is clicked. The function is passed the action name (string) and the model object as parameters.
 
 # Development
 
