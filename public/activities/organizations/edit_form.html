@@ -31,26 +31,7 @@
          id="about" placeholder="About" onblur="scope.m.about=this.value">[[m.about]]</textarea>
    </div>
    <div class="form-group">
-      <label for="gps_latitude">Location</label> 
-      <input type="text" class="form-control" 
-         placeholder="latitude" value="[[m.gps_latitude]]"/>
-      <input type="text" class="form-control"
-         placeholder="longitude" value="[[m.gps_longitude]]"/>
-      <button type="button" class="btn btn-primary" 
-        onclick="window.open('http://www.openstreetmap.org/?mlat=[[m.gps_latitude]]&mlon=[[m.gps_longitude]]#map=11/-25.8861/28.1442')"
-        >View In Map</button>
-      <br/><br/>
-		<div class="row">
-		  <div class="col-lg-6">
-		    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="Paste map marker link here"
-		       onblur="parseMapUrl(this.value, scope.m)">
-		      <span class="input-group-btn">
-		        <button class="btn btn-default" type="button">Load</button>
-		      </span>
-		    </div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 -->
-		</div><!-- /.row -->
+      <input-location model="[[m]]"/>
    </div>
 
 	<form id="uploadForm">
