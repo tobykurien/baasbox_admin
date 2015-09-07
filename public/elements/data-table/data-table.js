@@ -162,8 +162,8 @@ Polymer({
 		var scope = this;
 		var m = e.target.templateInstance.model.m;
 
-		if (confirm("Are you sure?") && m.id > 0) {
-			Baasbox.deleteObject(m.id, this.model).done(function(res) {
+		if (m.id != null && confirm("Are you sure?")) {
+			BaasBox.deleteObject(m.id, this.model).done(function(res) {
 				scope.loadData();
 			}).fail(function(error) {
 				alert(error.statusText);
