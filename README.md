@@ -18,7 +18,7 @@ A web application that uses the ```data-table``` HTML 5 web component that can b
 - Run ```bower install``` in the ```public``` directory to install the required dependencies. 
 - Edit the ```public/js/config.js``` with the correct details for your BaasBox server.
 - Open the ```public/index.html``` in your browser
-- Click the *Organizations* link and play with the tool to see how it works
+- Login, then play with the tool to see how it works
 
 The code for the Organizations tool is in ```public/activities/organizations/organizations.html```
 
@@ -100,7 +100,7 @@ Attributes that the ```data-table``` element accepts:
 In order to create more admin pages for the documents in your BaasBox server:
 
 - Add a new activity in the ```public/activities/``` directory (copy & paste the organizations one)
-- Add links to the activity in ```public/templates/navbar_main``` and ```public/activities/default/default.html```
+- Add links to the activity in ```public/templates/navbar_main```
 
 # Known Issues
 

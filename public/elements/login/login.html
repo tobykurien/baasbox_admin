@@ -1,7 +1,7 @@
 	<link rel="import"
 	      href="../../bower_components/polymer/polymer.html"/>
 
-	<polymer-element name="login-form">
+	<polymer-element name="login-form"  attributes="successUrl">
 	  <template>
 		<form action="#" class="well">
 			<div class="form-group">
@@ -16,7 +16,7 @@
 					value="{{password}}" />
 			</div>
 		
-			<button on-click="{{login}}" class="btn btn-default">Login</button>
+			<button id="login" on-click="{{login}}" class="btn btn-default">Login</button>
 		</form>	  	
 	  </template>
 	  <script src="baasbox-0.8.4.min.js"></script>	
@@ -24,23 +24,24 @@
 	
 	<script>
 	Polymer('login-form', {
-		username: null,
-		password: null,
+		successUrl: "",
 		
 		ready: function() {
-			
+			scope = this;
 		},
 	
 		login: function() {
 			config.baasbox.username = username.value;
 			config.baasbox.password = password.value;
 			
+			document.getElementById('login').disabled = true;
 			BaasBox.setEndPoint(config.baasbox.url);
 			BaasBox.appcode = config.baasbox.appcode;
 			BaasBox.login(config.baasbox.username, config.baasbox.password)
 				.done(function(user) {
-					location.href = "?r=organizations";
+					location.href = scope.successUrl;
 				}).fail(function(err) {
+					document.getElementById('login').disabled = false;
 					alert("Failed to login to Baasbox");
 				});
 			
