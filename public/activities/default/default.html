@@ -1,6 +1,18 @@
+{% extends "templates/base.html" %}
 
-   <h1>Baasbox Admin</h1>
-   
-   <ul>
-      <li><a href="?r=organizations">Organizations</a></li>
-   </ul>
+{% block head %}
+   <link rel="import" href="{{rootPath}}/elements/login/login.html"/>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse navbar-default" role="navigation">
+    <div class="container-fluid">
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+   <h1>Pledger Admin</h1>
+	
+	<login-form/>
+{% endblock %}

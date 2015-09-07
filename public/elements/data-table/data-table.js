@@ -41,12 +41,7 @@ Polymer({
 		
 		BaasBox.setEndPoint(config.baasbox.url);
 		BaasBox.appcode = config.baasbox.appcode;
-		BaasBox.login(config.baasbox.username, config.baasbox.password).done(function(user) {
-			scope.loadData(0);
-		}).fail(function(err) {
-			alert("Failed to login to Baasbox");
-			console.log("error logging into baasbox", err.statusText);
-		});
+		scope.loadData(0);
 	},
 
 	// Called to load the edit form for "add new" or "edit" operations
