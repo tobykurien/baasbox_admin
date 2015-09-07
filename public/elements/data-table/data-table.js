@@ -17,6 +17,7 @@ Polymer({
 	actions : "",
 	operations : [],
 	onAction : "",
+	modelInit : "",
 
 	// Called when component is ready to render
 	ready : function() {
@@ -39,6 +40,7 @@ Polymer({
 			this.operations = []
 		}
 		
+		// this will be taken care of my login tag
 		BaasBox.setEndPoint(config.baasbox.url);
 		BaasBox.appcode = config.baasbox.appcode;
 		scope.loadData(0);
@@ -60,14 +62,29 @@ Polymer({
 
 	// Called when "edit" button is clicked
 	edit : function(e, detail, sender) {
-		var m = e.target.templateInstance.model.m;
-		this.m = m;
+		this.m = e.target.templateInstance.model.m;
+		
+		if (this.modelInit && this.modelInit.trim().length > 0) {
+			var fn = window[this.modelInit];
+			if (fn && typeof fn === 'function') {
+				fn(this.m);
+			}
+		}
+
 		this.loadForm();
 	},
 
 	// called when "add new" is clicked
 	create : function() {
 		this.m = {};
+
+		if (this.modelInit && this.modelInit.trim().length > 0) {
+			var fn = window[this.modelInit];
+			if (fn && typeof fn === 'function') {
+				fn(this.m);
+			}
+		}
+		
 		this.loadForm();
 	},
 
@@ -158,7 +175,7 @@ Polymer({
 		var m = e.target.templateInstance.model.m;
 
 		if (m.id != null && confirm("Are you sure?")) {
-			BaasBox.deleteObject(m.id, this.model).done(function(res) {
+			BaasBox.deleteObject(m.id, scope.model).done(function(res) {
 				scope.loadData();
 			}).fail(function(error) {
 				alert(error.statusText);
